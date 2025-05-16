@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registrar Tarea</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #435251;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: #5f7371;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 320px;
+    }
+    h2 {
+      margin-bottom: 20px;
+      font-size: 20px;
+      color: #fff;
+      text-align: center;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      border: none;
+      box-sizing: border-box;
+      background-color: #4d5c5b;
+      color: white;
+    }
+    button {
+      background-color: #4CAF50;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .link {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .link a {
+      color: #48b7ff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Registrar Tarea</h2>
+    <form id="taskForm">
+      <input type="text" id="materia" placeholder="Nombre de la materia" required />
+      <input type="text" id="profe" placeholder="Profesor" required />
+      <input type="date" id="fechaEntrega" required />
+      <button type="submit">Registrar</button>
+    </form>
+    <div class="link">
+      <a href="verTareas.html">📘 Ver tareas registradas</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("taskForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const materia = document.getElementById("materia").value.trim();
+      const profe = document.getElementById("profe").value.trim();
+      const fechaEntrega = document.getElementById("fechaEntrega").value;
+      const fechaRegistro = new Date().toLocaleDateString("es-ES");
+
+      const nuevaTarea = {
+        materia,
+        profe,
+        fechaEntrega,
+        fechaRegistro
+      };
+
+      // Obtener tareas ya guardadas
+      const tareasGuardadas = JSON.parse(localStorage.getItem("tareas")) || [];
+
+      // Verificar si ya existe la tarea (misma materia y fecha de entrega)
+      const duplicada = tareasGuardadas.some(t => 
+        t.materia === materia && t.fechaEntrega === fechaEntrega
+      );
+
+      if (duplicada) {
+        alert("⚠️ Esta tarea ya está registrada para esa fecha.");
+        return;
+      }
+
+      // Agregar la nueva tarea
+      tareasGuardadas.push(nuevaTarea);
+      localStorage.setItem("tareas", JSON.stringify(tareasGuardadas));
+
+      alert("✅ Tarea registrada correctamente");
+
+      // Redirigir a la página de ver tareas
+      window.location.href = "verTareas.html";
+    });
+  </script>
+</body>
+</html>

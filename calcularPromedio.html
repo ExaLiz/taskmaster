@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promedio de Alumno</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #435251;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #5f7371;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 16px;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        input:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+        button {
+            background-color: #4c93af;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #4586a0;
+        }
+        #resultado {
+            font-size: 18px;
+            margin-top: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Calcular Promedio</h1>
+
+        <b><label for="nota1">Materia 1:</label><b>
+        <input type="number" id="nota1" min="0" max="10"><br>
+
+        <b><label for="nota2">Materia 2:</label><b>
+        <input type="number" id="nota2" min="0" max="10"><br>
+
+        <b><label for="nota3">Materia 3:</label><b>
+        <input type="number" id="nota3" min="0" max="10"><br>
+
+       <b><label for="nota4">Materia 4:</label><b>
+        <input type="number" id="nota4" min="0" max="10"><br>
+
+        <button onclick="calcularPromedio()">Calcular Promedio</button>
+
+        <h2 id="resultado"></h2>
+    </div>
+
+    <script>
+        function calcularPromedio() {
+            var nota1 = parseFloat(document.getElementById('nota1').value);
+            var nota2 = parseFloat(document.getElementById('nota2').value);
+            var nota3 = parseFloat(document.getElementById('nota3').value);
+            var nota4 = parseFloat(document.getElementById('nota4').value);
+
+            if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3) || isNaN(nota4)) {
+                alert("Por favor, ingresa todas las notas.");
+                return;
+            }
+
+            var promedio = (nota1 + nota2 + nota3 + nota4) / 4;
+            document.getElementById('resultado').textContent = "El promedio es: " + promedio.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>

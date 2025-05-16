@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Principal</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #435251;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .menu-container {
+            background-color: #5f7371;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 320px;
+            text-align: center;
+            box-sizing: border-box;
+            transition: transform 0.2s ease;
+        }
+
+        .menu-container:hover {
+            transform: translateY(-4px);
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 22px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .menu-btn {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 12px;
+            background-color: #48b7ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(72, 183, 255, 0.2);
+            outline: none;
+        }
+
+        .menu-btn:hover {
+            background-color: #3498db;
+            box-shadow: 0 4px 14px rgba(52, 152, 219, 0.3);
+        }
+
+        @media (max-width: 480px) {
+            .menu-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="menu-container">
+    <h1>Menú Principal</h1>
+    <button class="menu-btn" onclick="registrarClase()">📚 Registrar Clase</button>
+    <button class="menu-btn" onclick="calcularPromedio()">📊 Calcular Promedio</button>
+    <button class="menu-btn" onclick="agregarTarea()">📝 Agregar Nueva Tarea</button>
+    <button class="menu-btn" onclick="verNotas()">📖 Ver Notas</button>
+
+</div>
+
+<script>
+    function registrarClase() {
+        alert('➡️ Redirigiendo a registro de clase...');
+        // Aquí puedes redirigir a otra página o abrir un formulario.
+        window.location.href = 'RegistrarClase.html'; 
+    }
+
+    function calcularPromedio() {
+        alert('➡️ Redirigiendo a cálculo de promedio...');
+        // Aquí puedes redirigir o ejecutar la función para calcular el promedio.
+        window.location.href = 'calcularPromedio.html'; 
+    }
+
+    function agregarTarea() {
+        alert('➡️ Redirigiendo a agregar nueva tarea...');
+        // Aquí puedes redirigir a otra página o mostrar un formulario.
+        window.location.href = 'RegistrarTarea.html'; 
+    }
+
+    function verNotas() {
+        alert('➡️ Redirigiendo a ver tareas...');
+        // Aquí puedes redirigir a otra página o mostrar un formulario.
+        window.location.href = 'verTareas.html'; 
+    }
+</script>
+
+</body>
+</html>

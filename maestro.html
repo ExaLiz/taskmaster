@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Principal</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #435251;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .menu-container {
+            background-color: #5f7371;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 320px;
+            text-align: center;
+            box-sizing: border-box;
+            transition: transform 0.2s ease;
+        }
+
+        .menu-container:hover {
+            transform: translateY(-4px);
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 22px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .menu-btn {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 12px;
+            background-color: #48b7ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(72, 183, 255, 0.2);
+            outline: none;
+        }
+
+        .menu-btn:hover {
+            background-color: #3498db;
+            box-shadow: 0 4px 14px rgba(52, 152, 219, 0.3);
+        }
+
+        @media (max-width: 480px) {
+            .menu-container {
+                padding: 20px;
+            }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef1f1;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .notas-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .nota {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .nota:last-child {
+            border-bottom: none;
+        }
+    </style>
+
+
+    </style>
+</head>
+<body>
+
+
+
+<div class="menu-container">
+    <h1>Menú Principal</h1>
+    <button class="menu-btn" onclick="gestionarEstudiantes()">👩‍🎓 Registrar Estudiantes</button>
+    <button class="menu-btn" onclick="registrarClase()">📚 Registrar Clase</button>
+    <button class="menu-btn" onclick="calcularPromedio()">📊 Calcular Promedio</button>
+    <button class="menu-btn" onclick="registrarAsistencia()">📅 Registrar Asistencia</button>
+    <button class="menu-btn" onclick="verNotas()">📖 Ver Notas</button>
+
+</div>
+
+<script>
+    function gestionarEstudiantes() {
+        alert('➡️ Redirigiendo a gestionar estudiantes...');
+        window.location.href = 'detalle.html'; 
+    }
+
+    function registrarClase() {
+        alert('➡️ Redirigiendo a registro de clase...');
+        // Aquí puedes redirigir a otra página o abrir un formulario.
+        window.location.href = 'RegistrarClase.html'; 
+    }
+
+    function calcularPromedio() {
+        alert('➡️ Redirigiendo a cálculo de promedio...');
+        // Aquí puedes redirigir o ejecutar la función para calcular el promedio.
+        window.location.href = 'calcularPromedio.html'; 
+    }
+    
+    function registrarAsistencia() {
+        alert('➡️ Redirigiendo a registrar asistencia...');
+        // Redirige a la página de registrar asistencia
+        window.location.href = 'registrarAsistencias.html'; 
+    }
+
+    function verNotas() {
+    alert('➡️ Redirigiendo a ver notas...');
+    window.location.href = 'notas.html';
+}
+
+</script>
+
+</body>
+</html>

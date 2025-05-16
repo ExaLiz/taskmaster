@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Asistencias</title>
+</head>
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #bc8e8e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(171, 75, 75, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        form {
+            margin-bottom: 30px;
+        }
+        
+        form label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        form input,
+        form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #86dfe3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        form button:hover {
+            background-color: #5c98a1;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        table th,
+        table td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        
+        table th {
+            background-color: #9c8080;
+        }
+        </style>
+    <div class="container">
+        <h1>Registro de Asistencia</h1>
+        
+        <!-- Formulario para registrar la asistencia -->
+        <form id="attendanceForm">
+           <b> <label for="studentName">Nombre del Alumno:</label></b>
+            <input type="text" id="studentName" required>
+
+            <b><label for="attendanceDate">Fecha:</label></b>
+            <input type="date" id="attendanceDate" required>
+
+           <b> <label for="attendanceStatus">Asistencia:</label></b>
+            <select id="attendanceStatus" required>
+                <option value="presente"></option>
+                <option value="presente">Presente</option>
+                <option value="ausente">Ausente</option>
+            </select>
+
+            <button type="submit">Registrar Asistencia</button>
+        </form>
+
+        <!-- Tabla para mostrar los registros -->
+        <h2>Registros de Asistencia</h2>
+        <table id="attendanceTable">
+            <thead>
+                <tr>
+                    <th>Alumno</th>
+                    <th>Fecha</th>
+                    <th>Asistencia</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Los registros se agregarán aquí -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Función para agregar un registro de asistencia
+        document.getElementById("attendanceForm").addEventListener("submit", function(event) {
+            event.preventDefault();  // Evita que el formulario se recargue
+            
+            // Obtener los valores del formulario
+            const studentName = document.getElementById("studentName").value;
+            const attendanceDate = document.getElementById("attendanceDate").value;
+            const attendanceStatus = document.getElementById("attendanceStatus").value;
+            
+            // Crear una nueva fila en la tabla
+            const table = document.getElementById("attendanceTable").getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+            
+            // Crear celdas para cada dato
+            const cell1 = newRow.insertCell(0);
+            const cell2 = newRow.insertCell(1);
+            const cell3 = newRow.insertCell(2);
+
+            // Rellenar las celdas con los valores
+            cell1.textContent = studentName;
+            cell2.textContent = attendanceDate;
+            cell3.textContent = attendanceStatus;
+            
+            // Limpiar los campos del formulario
+            document.getElementById("attendanceForm").reset();
+        });
+    </script>
+</body>
+</html>

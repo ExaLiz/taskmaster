@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ver Tareas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #435251;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: #5f7371;
+      border-radius: 10px;
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #6b8886;
+      margin-bottom: 10px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      line-height: 1.5;
+    }
+
+    .sin-tareas {
+      text-align: center;
+      font-style: italic;
+      color: #ccc;
+    }
+
+    .btn-volver {
+      margin-top: 20px;
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: #48b7ff;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .btn-volver:hover {
+      background-color: #3498db;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>📘 Tareas Asignadas</h1>
+  <ul id="listaTareas"></ul>
+  <div class="sin-tareas" id="sinTareas" style="display: none;">
+
+</div>
+  <a class="btn-volver" href="alumno.html">⬅ Volver al menú</a>
+</div>
+
+<script>
+  const listaTareas = document.getElementById("listaTareas");
+  const sinTareas = document.getElementById("sinTareas");
+
+  function mostrarTareas() {
+    const tareas = JSON.parse(localStorage.getItem("tareas")) || [];
+
+    if (!Array.isArray(tareas) || tareas.length === 0) {
+      sinTareas.style.display = "block";
+      return;
+    }
+
+    tareas.forEach(tarea => {
+      // Validación mínima de estructura
+      if (tarea && tarea.materia && tarea.profe && tarea.fechaEntrega) {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <strong>📘 Materia:</strong> ${tarea.materia}<br>
+          <strong>👨‍🏫 Profesor:</strong> ${tarea.profe}<br>
+          <strong>📅 Entrega:</strong> ${tarea.fechaEntrega}<br>
+          <small>📌 Registrado el: ${tarea.fechaRegistro || 'N/D'}</small>
+        `;
+        listaTareas.appendChild(li);
+      }
+    });
+
+    if (listaTareas.children.length === 0) {
+      sinTareas.style.display = "block";
+    }
+  }
+
+  mostrarTareas();
+</script>
+
+</body>
+</html>

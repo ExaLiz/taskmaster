@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Horario de Clases</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #435251;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #5f7371;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        label, input, select, button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 16px;
+            border-radius: 8px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            font-size: 16px;
+            background-color: #4d5c5b;
+    color: white;
+        }
+
+        button {
+            background-color: #48b7ff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background-color: #3498db;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: #5f7371;
+            color: white;
+            font-weight: bold;
+        }
+
+        .receso {
+            background-color: #f9f9f9;
+            font-style: italic;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Registrar Horario de Clases</h1>
+    <form id="registroHorario">
+        <label for="clase">Clase:</label>
+        <input type="text" id="clase" required>
+
+        <label for="dia">Día:</label>
+        <select id="dia" required>
+            <option value="">Selecciona un día</option>
+            <option value="Lunes">Lunes</option>
+            <option value="Martes">Martes</option>
+            <option value="Miércoles">Miércoles</option>
+            <option value="Jueves">Jueves</option>
+            <option value="Viernes">Viernes</option>
+        </select>
+
+        <label for="horaInicio">Hora de Inicio:</label>
+        <input type="time" id="horaInicio" required>
+
+        <label for="horaFin">Hora de Fin:</label>
+        <input type="time" id="horaFin" required>
+
+        <button type="submit">Registrar Clase</button>
+    </form>
+</div>
+
+<h2>Horario de Clases</h2>
+<table id="tablaHorario">
+    <thead>
+        <tr>
+            <th>Día</th>
+            <th>Hora de Inicio</th>
+            <th>Hora de Fin</th>
+            <th>Clase</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="receso">
+            <td colspan="4">Receso - 10:00 AM a 10:30 AM</td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    document.getElementById('registroHorario').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const clase = document.getElementById('clase').value;
+        const dia = document.getElementById('dia').value;
+        const horaInicio = document.getElementById('horaInicio').value;
+        const horaFin = document.getElementById('horaFin').value;
+
+        const tabla = document.getElementById('tablaHorario').getElementsByTagName('tbody')[0];
+
+        const fila = tabla.insertRow();
+        const celdaDia = fila.insertCell(0);
+        const celdaHoraInicio = fila.insertCell(1);
+        const celdaHoraFin = fila.insertCell(2);
+        const celdaClase = fila.insertCell(3);
+
+        celdaDia.textContent = dia;
+        celdaHoraInicio.textContent = horaInicio;
+        celdaHoraFin.textContent = horaFin;
+        celdaClase.textContent = clase;
+
+        alert(`✅ Clase registrada:
+📚 Clase: ${clase}
+📅 Día: ${dia}
+🕒 Hora de Inicio: ${horaInicio}
+🕒 Hora de Fin: ${horaFin}`);
+
+        document.getElementById('registroHorario').reset();
+    });
+</script>
+
+</body>
+</html>
